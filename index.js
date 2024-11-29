@@ -7,9 +7,15 @@ export function Add(str) {
   if (str == "") {
     return 0;
   } else {
-    for (const c of str) {
-      if (c !== "\n" && c != ",") {
-        numArr.push(c);
+    if (str.startsWith("//")) {
+      const newLineIndex = str.indexOf("\n");
+      const delimiter = str.slice(2, newLineIndex);
+      numArr = str.slice(newLineIndex).split(delimiter);
+    } else {
+      for (const c of str) {
+        if (c !== "\n" && c != ",") {
+          numArr.push(c);
+        }
       }
     }
   }

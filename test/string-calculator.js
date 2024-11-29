@@ -17,4 +17,8 @@ describe("String calculator", () => {
   it("should return sum if new lines are passed between numbers", () => {
     expect(Add("1\n2,3")).to.equal(6);
   });
+
+  it("should return sum if pattern is //[delimiter]\n[numbers…]", () => {
+    expect(Add("//;\n1;2")).to.equal(3);
+  });
 });
