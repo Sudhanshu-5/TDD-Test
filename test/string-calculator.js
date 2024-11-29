@@ -31,7 +31,11 @@ describe("String calculator", () => {
     expect(Add("1,1000,1002")).to.equal(1001);
   });
 
-  it("handle //[***]\n1***2***3", () => {
+  it("should handle //[***]\n1***2***3", () => {
     expect(Add("//[***]\n1***2***3")).to.equal(6);
+  });
+
+  it("should handle //[*][%]\n1*2%3", () => {
+    expect(Add("//[*][%]\n1*2%3")).to.equal(6);
   });
 });
