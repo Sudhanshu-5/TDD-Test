@@ -6,16 +6,23 @@ export function Add(str) {
 
   if (str == "") {
     return 0;
+  }
+
+  const negativeNumbers = str.split(/,|\n/).filter((num) => num < 0);
+  if (negativeNumbers.length > 0) {
+    throw new Error(`negatives not allowed: ${negativeNumbers.join(", ")}`);
+  }
+
+  if (str.startsWith("//")) {
+    const newLineIndex = str.indexOf("\n");
+    const delimiter = str.slice(2, newLineIndex);
+    numArr = str.slice(newLineIndex).split(delimiter);
   } else {
-    if (str.startsWith("//")) {
-      const newLineIndex = str.indexOf("\n");
-      const delimiter = str.slice(2, newLineIndex);
-      numArr = str.slice(newLineIndex).split(delimiter);
-    } else {
-      for (const c of str) {
-        if (c !== "\n" && c != ",") {
-          numArr.push(c);
-        }
+    for (const char of str) {
+      if (char == "\n" || char == ",") {
+        continue;
+      } else {
+        numArr.push(char);
       }
     }
   }

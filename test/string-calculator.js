@@ -21,4 +21,9 @@ describe("String calculator", () => {
   it("should return sum if pattern is //[delimiter]\n[numbers…]", () => {
     expect(Add("//;\n1;2")).to.equal(3);
   });
+
+  it("should return Negative numbers not allowed: <numbers> for negative nums", () => {
+    expect(() => Add("-1,-2,3")).to.throw("negatives not allowed: -1, -2");
+    expect(() => Add("-1, 2,3")).to.throw("negatives not allowed: -1");
+  });
 });
