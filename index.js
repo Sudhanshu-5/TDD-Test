@@ -18,7 +18,8 @@ export function Add(str) {
     const delimiter = str.slice(2, newLineIndex);
     numArr = str.slice(newLineIndex).split(delimiter);
   } else {
-    for (const char of str) {
+    const arr = str.split(/[\n,]/);
+    for (const char of arr) {
       if (char == "\n" || char == ",") {
         continue;
       } else {
@@ -29,8 +30,7 @@ export function Add(str) {
 
   sum = numArr.reduce((acc, curr) => {
     const currNum = +curr;
-
-    return acc + currNum;
+    return currNum > 1000 ? acc : acc + currNum;
   }, 0);
 
   return sum;

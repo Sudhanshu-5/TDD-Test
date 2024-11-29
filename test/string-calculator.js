@@ -26,4 +26,8 @@ describe("String calculator", () => {
     expect(() => Add("-1,-2,3")).to.throw("negatives not allowed: -1, -2");
     expect(() => Add("-1, 2,3")).to.throw("negatives not allowed: -1");
   });
+
+  it("should ignore numbers bigger than 1000", () => {
+    expect(Add("1,1000,1002")).to.equal(1001);
+  });
 });
