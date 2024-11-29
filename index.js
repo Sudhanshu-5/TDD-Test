@@ -7,7 +7,11 @@ export function Add(str) {
   if (str == "") {
     return 0;
   } else {
-    numArr = str.split(",");
+    for (const c of str) {
+      if (c !== "\n" && c != ",") {
+        numArr.push(c);
+      }
+    }
   }
 
   sum = numArr.reduce((acc, curr) => {

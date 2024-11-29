@@ -13,4 +13,8 @@ describe("String calculator", () => {
   it("should return sum if multiple chars are passed", () => {
     expect(Add("1,2,3")).to.equal(6);
   });
+
+  it("should return sum if new lines are passed between numbers", () => {
+    expect(Add("1\n2,3")).to.equal(6);
+  });
 });
