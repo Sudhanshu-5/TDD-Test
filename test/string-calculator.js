@@ -30,4 +30,8 @@ describe("String calculator", () => {
   it("should ignore numbers bigger than 1000", () => {
     expect(Add("1,1000,1002")).to.equal(1001);
   });
+
+  it("handle //[***]\n1***2***3", () => {
+    expect(Add("//[***]\n1***2***3")).to.equal(6);
+  });
 });
